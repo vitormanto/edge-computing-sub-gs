@@ -251,4 +251,4 @@ O projeto "Blue Future" não apenas demonstra a aplicação prática de tecnolog
 Ao seguir as instruções detalhadas acima, você poderá montar, programar e operar seu próprio sistema de monitoramento ambiental, contribuindo para um futuro mais sustentável e consciente.
 
 ## Referências:
-[Link do Simulador]()
+[Link do Simulador](https://www.tinkercad.com/things/3ENjuV8e3GU-projeto-blue-future)
