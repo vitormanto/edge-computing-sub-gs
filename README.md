@@ -1,32 +1,47 @@
 # Monitoramento de Temperatura da Água e Incidência Solar
+### Por Vitor Mantovani Camilo (RM556537)
 
 ## Descrição do Projeto
-Este projeto consiste em uma solução para o desafio "Blue Future" proposto pela FIAP, focando no monitoramento e registro da temperatura da água e na incidência solar para contribuir com a proteção dos oceanos. O sistema utiliza um Arduino Uno em conjunto com sensores analógicos NTC (temperatura) e LDR (luminosidade) para realizar as medições. O monitoramento é exibido em tempo real em um display LCD e inclui um alerta visual e sonoro caso a temperatura da água ultrapasse os 23°C, indicando uma anomalia.
+O projeto "Blue Future" proposto pela FIAP visa monitorar e registrar a temperatura da água e a incidência solar para contribuir com a proteção dos oceanos. Utilizamos um Arduino Uno em conjunto com sensores analógicos TMP (temperatura) e LDR (luminosidade) para realizar as medições. O sistema exibe as leituras em tempo real em um display LCD e emite alertas visuais e sonoros caso a temperatura da água ultrapasse 23°C, indicando uma anomalia.
 
 ## Especificações do Sistema
-1. **Sensores Utilizados:**
-   - Sensor de Temperatura (NTC) para medir a temperatura da água.
-   - Sensor de Luminosidade (LDR) para medir a incidência de luz solar.
 
-2. **Condições de Registro:**
-   - O sistema registra na memória EEPROM o valor da temperatura média (ºC) e a luminosidade média (%) sempre que a temperatura da água exceder 23°C. A média é calculada a partir de 30 leituras ao longo de 1 minuto (uma leitura a cada 2 segundos).
+### Sensores Utilizados:
+- Sensor de Temperatura (TMP) para medir a temperatura da água.
+- Sensor de Luminosidade (LDR) para medir a incidência de luz solar.
 
-3. **Indicação de Luminosidade:**
-   - Um gráfico de barras de LEDs mostra o nível de luminosidade (0 a 100%).
+### Condições de Registro:
+- O sistema registra na memória EEPROM o valor da temperatura média (ºC) e a luminosidade média (%) sempre que a temperatura da água exceder 23°C. A média é calculada a partir de 30 leituras ao longo de 1 minuto (uma leitura a cada 2 segundos).
 
-4. **Detecção de Anomalias:**
-   - Ao detectar temperatura acima de 23°C, o sistema ativa um LED vermelho e emite um beep de alerta.
+### Indicação de Luminosidade:
+- Um gráfico de barras de LEDs mostra o nível de luminosidade (0 a 100%).
 
-5. **Memória EEPROM:**
-   - O programa está configurado para armazenar até 900 registros na EEPROM.
+### Detecção de Anomalias:
+- Ao detectar temperatura acima de 23°C, o sistema ativa um LED vermelho e emite um beep de alerta.
 
-6. **Display de LCD 16x2:**
-   - O display mostra a temperatura e luminosidade atuais, além de um logo gráfico personalizado.
+### Memória EEPROM:
+- O programa está configurado para armazenar até 900 registros na EEPROM, garantindo o armazenamento eficiente dos dados.
 
-7. **Simulação:**
-   - Utilize a plataforma Wokwi ou Thinkercad para simular o funcionamento do sistema.
+### Display de LCD 16x2:
+- O display mostra a temperatura e luminosidade atuais, além de um logo gráfico personalizado.
 
-## Código Arduino
+## Desafios e Aprendizados
+Durante o desenvolvimento, enfrentei alguns desafios significativos, como a integração dos sensores analógicos e a gestão eficiente da memória EEPROM para armazenamento dos registros. O uso do Arduino Uno exigiu alguns ajustes no código para garantir leituras estáveis e precisas, especialmente com a média móvel das leituras de temperatura e luminosidade.
+
+Implementar o alerta visual e sonoro para indicar anomalias foi uma parte crítica do projeto, pois envolveu o controle preciso de LEDs e do buzzer para garantir a eficácia na sinalização de condições adversas na água.
+
+## Instruções de Uso
+
+### Montagem do Circuito:
+1. Monte o circuito conforme o esquema fornecido no simulador.
+2. Conecte os sensores TMP e LDR aos pinos analógicos do Arduino Uno.
+3. Conecte os LEDs, o LED vermelho e o buzzer aos pinos digitais conforme especificado no código.
+
+### Carregamento do Código:
+- Utilize a IDE do Arduino para carregar o código fornecido neste repositório.
+- Ajuste os parâmetros necessários, como o endereço do LCD e os limites de temperatura conforme suas necessidades.
+
+## Código Arduino:
 
 ```
 // Global Solution - Blue Future
@@ -221,31 +236,19 @@ void loop() {
 
 ```
 
-## Objetivos
-- Desenvolver um sistema funcional de monitoramento e registro utilizando sensores NTC e LDR.
-- Implementar um sistema de alerta visual e sonoro para indicar anomalias na temperatura da água.
-- Configurar a memória EEPROM para armazenamento eficiente dos dados registrados.
-- Simular e validar o projeto na plataforma Wokwi ou Thinkercad.
+### Operação do Sistema:
+1. Após ligar o Arduino, o display LCD começará a exibir a temperatura da água e a luminosidade medida.
+2. Os LEDs de indicação de luminosidade mostrarão a intensidade da luz solar em tempo real.
+3. Caso a temperatura da água ultrapasse 23°C, o LED vermelho acenderá e o buzzer emitirá um som de alerta.
+4. Os dados de temperatura e luminosidade durante as anomalias são registrados na EEPROM para análise posterior.
 
-## Instruções de Uso
-1. **Montagem do Circuito:**
-   - Monte o circuito conforme o esquema de conexão fornecido.
-   - Conecte o Arduino a uma fonte de alimentação ou ao computador via cabo USB.
+### Simulação:
+- Antes da implementação física, recomenda-se simular o sistema usando plataformas como Wokwi ou Thinkercad para validar o funcionamento do circuito e do código.
 
-2. **Programação do Arduino:**
-   - Carregue o código fornecido neste repositório utilizando a IDE do Arduino.
-   - Certifique-se de ajustar os valores conforme necessário para o seu projeto específico.
+## Conclusão
+O projeto "Blue Future" não apenas demonstra a aplicação prática de tecnologias de monitoramento ambiental usando Arduino, mas também ressalta a importância de soluções tecnológicas na preservação dos oceanos. A combinação de sensores, display LCD, alertas e armazenamento de dados oferece uma solução robusta para monitorar e registrar condições críticas da água de forma eficiente e acessível.
 
-3. **Operação do Sistema:**
-   - O display LCD exibirá a temperatura da água e a incidência solar atualizadas a cada segundo.
-   - O gráfico de barras de LEDs mostrará a intensidade da luz solar.
-   - O LED vermelho acenderá e o buzzer emitirá um som quando a temperatura da água ultrapassar 23°C, indicando um alerta de anomalia.
+Ao seguir as instruções detalhadas acima, você poderá montar, programar e operar seu próprio sistema de monitoramento ambiental, contribuindo para um futuro mais sustentável e consciente.
 
-4. **Simulação:**
-   - Utilize a plataforma Wokwi ou Thinkercad para simular o funcionamento do sistema antes da implementação física.
-
-Este README fornece todas as informações necessárias para montar, programar e operar o sistema de monitoramento de temperatura e luminosidade dos oceanos utilizando o Arduino Uno. Certifique-se de seguir as instruções detalhadas para garantir o correto funcionamento do projeto.
-
----
-
-Esse README combina a proposta do projeto com o código desenvolvido, fornecendo uma visão clara das funcionalidades, especificações e instruções para uso e implementação do sistema de monitoramento.
+## Referências:
+[Link do Simulador]()
